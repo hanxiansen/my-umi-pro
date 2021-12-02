@@ -4,7 +4,7 @@ import ProTable from '@ant-design/pro-table';
 import { Badge, Card, Descriptions, Divider } from 'antd';
 import type { FC } from 'react';
 import React from 'react';
-import { useRequest } from 'umi';
+import { useRequest, connect } from 'umi';
 import type { BasicGood, BasicProgress } from './data.d';
 import { queryBasicProfile } from './service';
 import styles from './style.less';
@@ -190,4 +190,7 @@ const Basic: FC = () => {
   );
 };
 
-export default Basic;
+export default connect(({ GlobalModel, UserModel }) => {
+  console.log('[han global]', GlobalModel)
+  console.log('[han user]', UserModel)
+})(Basic);
